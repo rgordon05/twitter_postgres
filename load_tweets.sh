@@ -11,7 +11,7 @@ denormalized='postgresql://postgres:pass@localhost:21135/postgres'
 
 echo 'load normalized'
 for file in $files; do
-    python3 load_tweets.py --db "$normalized" --inputs "$file"
+    python3 load_tweets.py --db "postgresql+psycopg2://postgres:pass@localhost:21136/postgres" --inputs "$file"
 done
 
 psql "$normalized" -v ON_ERROR_STOP=1 \
